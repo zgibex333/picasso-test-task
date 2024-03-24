@@ -14,6 +14,7 @@ const extendedApi = baseApi.injectEndpoints({
       merge: (currentCache, newItems, { arg: { startIndex } }) => {
         if (startIndex === 0) {
           currentCache = [...newItems];
+          return;
         }
         currentCache.push(...newItems);
       },
