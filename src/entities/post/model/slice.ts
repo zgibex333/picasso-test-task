@@ -11,7 +11,10 @@ const extendedApi = baseApi.injectEndpoints({
       serializeQueryArgs: ({ endpointName }) => {
         return endpointName;
       },
-      merge: (currentCache, newItems) => {
+      merge: (currentCache, newItems, { arg: { startIndex } }) => {
+        if (startIndex === 0) {
+          currentCache = [...newItems];
+        }
         currentCache.push(...newItems);
       },
       forceRefetch({ currentArg, previousArg }) {
