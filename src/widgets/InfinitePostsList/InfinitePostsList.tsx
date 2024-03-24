@@ -23,7 +23,7 @@ export const InfinitePostsList = ({ height = "100vh" }: Props) => {
   const [getPosts, { data = [] }] = useLazyGetPostsQuery();
 
   useEffect(() => {
-    getPosts({ startIndex: 0, stopIndex: 25 });
+    !data.length && getPosts({ startIndex: 0, stopIndex: 25 });
   }, [getPosts]);
 
   const cacheRef = useRef<CellMeasurerCache>(initialCache);
